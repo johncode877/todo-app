@@ -3,33 +3,54 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import { TodoCounter } from './components/TodoCounter'
+import { TodoSearch } from './components/TodoSearch'
+import { TodoList } from './components/TodoList'
+import { TodoItem } from './components/TodoItem'
+import { CreateTodoButton } from './components/CreateTodoButton'
+
+import React from 'react'
+
+const defaultTodos = [
+  { text: 'Aprender Reactjs', completed: false },
+  { text: 'Certificarme en AWS Foundations', completed: false },
+  { text: 'Aprender Nodejs', completed: true },
+  { text: 'Desplegar api rest python en Railway', completed: false },
+];
+
 function App() {
-  const [count, setCount] = useState(0)
+  //const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* <React.Fragment> */}
+
+      <TodoCounter completed={1} total={defaultTodos.length} />
+
+      <TodoSearch />
+
+      <TodoList>
+        {/* 
+           <TodoItem />
+           <TodoItem />
+        */}
+
+        {defaultTodos.map(todo => (
+            <TodoItem 
+                 key={todo.text} 
+                 text={todo.text} 
+                 completed={todo.completed}
+                 />
+          ))}
+        
+      </TodoList>
+
+      <CreateTodoButton />
+
+      {/* </React.Fragment> */}
     </>
   )
 }
+
 
 export default App
