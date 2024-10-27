@@ -1,11 +1,36 @@
 
+import './TodoCounter.css';
+
+const estilos = {    
+    fontSize: '24px',
+    textAlign: 'center',
+    margin: 0,
+    padding: '48px'
+}
+
+/*
+   Es posible tambien colocar 
+   la doble llave para poder incluir los 
+   parametros del atributo style
+   style={{
+      fontSize: '24px'
+     }}
+   
+   <h1 style={estilos} >
+
+   import './TodoCounter.css';
+   <h1 >
+
+*/
+
 //function TodoCounter(props) {
-function TodoCounter({total, completed}) {    
+// style es un atributo del elemento h1
+function TodoCounter({ total, completed }) {
     /*elementos de react*/
     return (
-      <h1>
-        Has completado {completed} de {total} TODOS
-      </h1>
+        <h1 className="TodoCounter">
+             Has completado <span>{completed}</span> de <span>{total}</span> TODOs
+        </h1>
     );
 }
 
@@ -13,4 +38,4 @@ function TodoCounter({total, completed}) {
 //export default TodoCounter;
 
 // export nombrado 
-export {TodoCounter};
+export { TodoCounter };
