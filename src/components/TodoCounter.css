@@ -20,3 +20,7 @@ h1 {
 .TodoCounter span {
     font-weight: 700
 }
+
+.TodoCounter--hidden {
+   display: none;
+}

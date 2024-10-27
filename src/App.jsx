@@ -26,11 +26,11 @@ function App() {
   // del estado
   // el valor del input esta atado al estado
   const [searchValue, setSearchValue] = React.useState('');
-   
+
   const [todos, setTodos] = React.useState(defaultTodos);
-   
+
   const completedTodos = todos.filter(todo => !!todo.completed).length;
-  const totalTodos = todos.length; 
+  const totalTodos = todos.length;
 
   // se crea un estado derivado de los otros estados como "todos"
   // esta estado contiene los todos que cumplen la condicion
@@ -41,7 +41,38 @@ function App() {
     return todoText.includes(searchText)
   });
 
-  console.log('Los usuarios buscan todos de ' + searchValue);
+  // metodo que permite actualizar el todoItem
+  const completeTodo = (text) => {
+    // se hace una copia del estado inicial de "todos" 
+    // usando el operador ...
+    const newTodos = [...todos];
+
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+
+    newTodos[todoIndex].completed = true;
+
+    // se le pasa una copia al metodo 
+    // que permite actualizar el estado todos
+    setTodos(newTodos);
+  }
+
+
+   const deleteTodo = (text) => {    
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+    
+    // splice elimina x elementos a partir
+    // del indice todoIndex.
+    // en este caso solo 1 , como se 
+    // indica en el segundo argumento
+    newTodos.splice(todoIndex,1);
+    setTodos(newTodos);
+  }
+  
 
   // <> es la forma abreviada de <React.Fragment> 
   return (
@@ -66,6 +97,10 @@ function App() {
             key={todo.text}
             text={todo.text}
             completed={todo.completed}
+            // evento que se dispara cuando 
+            // un todo ha sido completado 
+            onComplete={ () => completeTodo(todo.text) }
+            onDelete={() => deleteTodo(todo.text)}
           />
         ))}
 

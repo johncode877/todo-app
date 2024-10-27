@@ -1,7 +1,7 @@
 
 import './TodoCounter.css';
 
-const estilos = {    
+const estilos = {
     fontSize: '24px',
     textAlign: 'center',
     margin: 0,
@@ -26,11 +26,17 @@ const estilos = {
 //function TodoCounter(props) {
 // style es un atributo del elemento h1
 function TodoCounter({ total, completed }) {
+
     /*elementos de react*/
     return (
-        <h1 className="TodoCounter">
-             Has completado <span>{completed}</span> de <span>{total}</span> TODOs
-        </h1>
+        <>
+            <h1 className={`TodoCounter ${completed == total && "TodoCounter--hidden"}`}>
+                Has completado <span>{completed}</span> de <span>{total}</span> TODOs
+            </h1>
+            <h1 className={`TodoCounter ${completed != total && "TodoCounter--hidden"}`}>
+                Felicitaciones!!!!
+            </h1>
+        </>
     );
 }
 
