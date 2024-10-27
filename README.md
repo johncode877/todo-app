@@ -13,5 +13,12 @@ Currently, two official plugins are available:
 
 # Eventos en React: onClick, onChange
 
+# Trabajando con el Estado
+
+En cada componente debemos importar React
+import React from 'react';
+para poder utilizar la funcion useState()
+
+
 
 
