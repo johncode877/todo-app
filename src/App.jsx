@@ -32,6 +32,15 @@ function App() {
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length; 
 
+  // se crea un estado derivado de los otros estados como "todos"
+  // esta estado contiene los todos que cumplen la condicion
+  // que incluyen al texto en "searchValue"
+  const searchedTodos = todos.filter(todo => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText)
+  });
+
   console.log('Los usuarios buscan todos de ' + searchValue);
 
   // <> es la forma abreviada de <React.Fragment> 
@@ -52,7 +61,7 @@ function App() {
            <TodoItem />
         */}
 
-        {defaultTodos.map(todo => (
+        {searchedTodos.map(todo => (
           <TodoItem
             key={todo.text}
             text={todo.text}

@@ -30,6 +30,6 @@ hijos a través de los props
 Los estados derivados , son calculos , operaciones
 o resultados que hacemos con los estados 
 
-
+# Buscando Todos
 
 
