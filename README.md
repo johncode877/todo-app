@@ -11,5 +11,7 @@ Currently, two official plugins are available:
 
 # Estilos CSS en React
 
+# Eventos en React: onClick, onChange
+
 
 
