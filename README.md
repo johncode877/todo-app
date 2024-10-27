@@ -19,6 +19,17 @@ En cada componente debemos importar React
 import React from 'react';
 para poder utilizar la funcion useState()
 
+# Compartiendo estado del padre al hijo y trabajar con estados derivados
+
+Los estados deben estar a nivel del componente
+padre.
+El componente padre se encargara de pasarle el 
+estado y el metodo para actualizarlo a los componentes
+hijos a través de los props 
+
+Los estados derivados , son calculos , operaciones
+o resultados que hacemos con los estados 
+
 
 
 

@@ -1,16 +1,12 @@
 import React from 'react';
 import './TodoSearch.css'
 
-function TodoSearch() {
+function TodoSearch({
+  searchValue,
+  setSearchValue
+}) {
+   
 
-     // el estado es inmutable 
-     // es por ello que react 
-     // nos ofrece una funcion para modificar el valor
-     // del estado
-     // el valor del input esta atado al estado
-    const [searchValue, setSearchValue] = React.useState('');
-        
-    console.log('Los usuarios buscan todos de '+ searchValue);
     
     return (
       <input 

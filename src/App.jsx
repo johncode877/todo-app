@@ -15,19 +15,36 @@ const defaultTodos = [
   { text: 'Aprender Reactjs', completed: false },
   { text: 'Certificarme en AWS Foundations', completed: false },
   { text: 'Aprender Nodejs', completed: true },
-  { text: 'Desplegar api rest python en Railway', completed: false },
+  { text: 'Desplegar api rest python en Railway', completed: true },
 ];
 
 function App() {
-  //const [count, setCount] = useState(0)
 
+  // el estado es inmutable 
+  // es por ello que react 
+  // nos ofrece una funcion para modificar el valor
+  // del estado
+  // el valor del input esta atado al estado
+  const [searchValue, setSearchValue] = React.useState('');
+   
+  const [todos, setTodos] = React.useState(defaultTodos);
+   
+  const completedTodos = todos.filter(todo => !!todo.completed).length;
+  const totalTodos = todos.length; 
+
+  console.log('Los usuarios buscan todos de ' + searchValue);
+
+  // <> es la forma abreviada de <React.Fragment> 
   return (
     <>
-      {/* <React.Fragment> */}
+      {/*<> <React.Fragment> */}
 
-      <TodoCounter completed={1} total={defaultTodos.length} />
+      <TodoCounter completed={completedTodos} total={totalTodos} />
 
-      <TodoSearch />
+      <TodoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
 
       <TodoList>
         {/* 
@@ -36,13 +53,13 @@ function App() {
         */}
 
         {defaultTodos.map(todo => (
-            <TodoItem 
-                 key={todo.text} 
-                 text={todo.text} 
-                 completed={todo.completed}
-                 />
-          ))}
-        
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+          />
+        ))}
+
       </TodoList>
 
       <CreateTodoButton />
