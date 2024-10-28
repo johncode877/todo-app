@@ -29,10 +29,10 @@ function TodoCounter({ total, completed }) {
     /*elementos de react*/
     return (
         <>
-            <h1 className={`TodoCounter ${completed == total && "TodoCounter--hidden"}`}>
+            <h1 className={`TodoCounter ${ (total > 0 && completed == total) && "TodoCounter--hidden"}`}>
                 Has completado <span>{completed}</span> de <span>{total}</span> TODOs
             </h1>
-            <h1 className={`TodoCounter ${completed != total && "TodoCounter--hidden"}`}>
+            <h1 className={`TodoCounter ${ !(total > 0 && completed == total) && "TodoCounter--hidden"}`}>
                 Felicitaciones!!!!
             </h1>
         </>

@@ -11,6 +11,8 @@ import { CreateTodoButton } from './components/CreateTodoButton'
 
 import React from 'react'
 
+/*
+
 const defaultTodos = [
   { text: 'Aprender Reactjs', completed: false },
   { text: 'Certificarme en AWS Foundations', completed: false },
@@ -18,7 +20,33 @@ const defaultTodos = [
   { text: 'Desplegar api rest python en Railway', completed: true },
 ];
 
+let stringifiedTodos = JSON.stringify(defaultTodos);
+
+localStorage.setItem('TODOS_V1',stringifiedTodos);
+
+let todos = JSON.parse(localStorage.getItem('TODOS_V1'));
+
+
+localStorage.removeItem('TODOS_V1');
+
+*/
+
+
+
+
 function App() {
+
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+  
+  let parsedTodos;
+  // primera vez que el usuario entra en la aplicacion 
+  if(!localStorageTodos){
+    localStorage.setItem('TODOS_V1',JSON.stringify([]));
+    parsedTodos = []; 
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+  
 
   // el estado es inmutable 
   // es por ello que react 
@@ -27,7 +55,7 @@ function App() {
   // el valor del input esta atado al estado
   const [searchValue, setSearchValue] = React.useState('');
 
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const [todos, setTodos] = React.useState(parsedTodos);
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -41,6 +69,12 @@ function App() {
     return todoText.includes(searchText)
   });
 
+
+  const saveTodos = (newTodos) => {
+    localStorage.setItem('TODOS_V1',JSON.stringify(newTodos));
+    setTodos(newTodos);
+  }
+  
   // metodo que permite actualizar el todoItem
   const completeTodo = (text) => {
     // se hace una copia del estado inicial de "todos" 
@@ -55,7 +89,7 @@ function App() {
 
     // se le pasa una copia al metodo 
     // que permite actualizar el estado todos
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }
 
 
@@ -70,7 +104,7 @@ function App() {
     // en este caso solo 1 , como se 
     // indica en el segundo argumento
     newTodos.splice(todoIndex,1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }
   
 

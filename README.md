@@ -51,3 +51,12 @@ Pasamos el parametro color
 {iconType[type](color)}
 
 
+# Local Storage con React.js
+
+Api del navegador que permite la persistencia de datos
+
+let stringifiedTodos = JSON.stringify(defaulTodos)
+permite convertir a string un json 
+
+
+JSON.parse(stringifiedTodos);
