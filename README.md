@@ -35,3 +35,19 @@ o resultados que hacemos con los estados
 
 # Completando y eliminando TODOs
 
+# Iconos en React: librerías y SVG
+
+npm i vite-plugin-svgr
+
+npm i @svgr/rollup --save-dev
+
+iconType[type] es el componente 
+que maneja el icono al cual 
+le pasamos un parametro 'color'
+el cual es utilizado por el componente
+como una propiedad 
+
+Pasamos el parametro color
+{iconType[type](color)}
+
+

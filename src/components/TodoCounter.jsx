@@ -1,14 +1,13 @@
-
 import './TodoCounter.css';
 
-const estilos = {
-    fontSize: '24px',
-    textAlign: 'center',
-    margin: 0,
-    padding: '48px'
-}
-
 /*
+   const estilos = {
+        fontSize: '24px',
+        textAlign: 'center',
+        margin: 0,
+        padding: '48px'
+   }
+
    Es posible tambien colocar 
    la doble llave para poder incluir los 
    parametros del atributo style
