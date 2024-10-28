@@ -31,23 +31,37 @@ localStorage.removeItem('TODOS_V1');
 
 */
 
+function useLocalStorage(itemName, initialValue) {
+
+  const localStorageItem = localStorage.getItem('TODOS_V1');
+
+  let parsedItem;
+  // primera vez que el usuario entra en la aplicacion 
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, 
+                JSON.stringify(initialValue));
+    parsedItem = [];
+  } else {
+    parsedItem = JSON.parse(localStorageItem);
+  }
+
+  const [item,setItem] = React.useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+
+  return [item , saveItem];
+}
 
 
 
 function App() {
+   
 
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1',[]);
   
-  let parsedTodos;
-  // primera vez que el usuario entra en la aplicacion 
-  if(!localStorageTodos){
-    localStorage.setItem('TODOS_V1',JSON.stringify([]));
-    parsedTodos = []; 
-  } else {
-    parsedTodos = JSON.parse(localStorageTodos);
-  }
-  
-
   // el estado es inmutable 
   // es por ello que react 
   // nos ofrece una funcion para modificar el valor
@@ -55,7 +69,7 @@ function App() {
   // el valor del input esta atado al estado
   const [searchValue, setSearchValue] = React.useState('');
 
-  const [todos, setTodos] = React.useState(parsedTodos);
+  
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -70,11 +84,8 @@ function App() {
   });
 
 
-  const saveTodos = (newTodos) => {
-    localStorage.setItem('TODOS_V1',JSON.stringify(newTodos));
-    setTodos(newTodos);
-  }
-  
+
+
   // metodo que permite actualizar el todoItem
   const completeTodo = (text) => {
     // se hace una copia del estado inicial de "todos" 
@@ -93,20 +104,20 @@ function App() {
   }
 
 
-   const deleteTodo = (text) => {    
+  const deleteTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
       (todo) => todo.text == text
     );
-    
+
     // splice elimina x elementos a partir
     // del indice todoIndex.
     // en este caso solo 1 , como se 
     // indica en el segundo argumento
-    newTodos.splice(todoIndex,1);
+    newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   }
-  
+
 
   // <> es la forma abreviada de <React.Fragment> 
   return (
@@ -133,7 +144,7 @@ function App() {
             completed={todo.completed}
             // evento que se dispara cuando 
             // un todo ha sido completado 
-            onComplete={ () => completeTodo(todo.text) }
+            onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}
           />
         ))}
