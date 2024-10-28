@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import reactLogo from '../assets/react.svg'
+import viteLogo from '../assets/vite.svg'
 //import './App.css'
 
-import { TodoCounter } from './components/TodoCounter'
-import { TodoSearch } from './components/TodoSearch'
-import { TodoList } from './components/TodoList'
-import { TodoItem } from './components/TodoItem'
-import { CreateTodoButton } from './components/CreateTodoButton'
-
-import React from 'react'
+import { TodoCounter } from '../components/TodoCounter';
+import { TodoList } from '../components/TodoList';
+import { TodoItem } from '../components/TodoItem';
+import { CreateTodoButton } from '../components/CreateTodoButton';
+import { TodoSearch } from '../components/TodoSearch';
+import { useLocalStorage } from './useLocalStorage';
+import React from 'react';
 
 /*
 
@@ -31,37 +31,13 @@ localStorage.removeItem('TODOS_V1');
 
 */
 
-function useLocalStorage(itemName, initialValue) {
-
-  const localStorageItem = localStorage.getItem('TODOS_V1');
-
-  let parsedItem;
-  // primera vez que el usuario entra en la aplicacion 
-  if (!localStorageItem) {
-    localStorage.setItem(itemName, 
-                JSON.stringify(initialValue));
-    parsedItem = [];
-  } else {
-    parsedItem = JSON.parse(localStorageItem);
-  }
-
-  const [item,setItem] = React.useState(parsedItem);
-
-  const saveItem = (newItem) => {
-    localStorage.setItem(itemName, JSON.stringify(newItem));
-    setItem(newItem);
-  };
-
-  return [item , saveItem];
-}
-
 
 
 function App() {
-   
 
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1',[]);
-  
+
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+
   // el estado es inmutable 
   // es por ello que react 
   // nos ofrece una funcion para modificar el valor
@@ -69,7 +45,7 @@ function App() {
   // el valor del input esta atado al estado
   const [searchValue, setSearchValue] = React.useState('');
 
-  
+
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -93,7 +69,7 @@ function App() {
     const newTodos = [...todos];
 
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
 
     newTodos[todoIndex].completed = true;
@@ -107,7 +83,7 @@ function App() {
   const deleteTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
 
     // splice elimina x elementos a partir
