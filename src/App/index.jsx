@@ -3,38 +3,26 @@ import reactLogo from '../assets/react.svg'
 import viteLogo from '../assets/vite.svg'
 //import './App.css'
 
-import { TodoCounter } from '../components/TodoCounter';
-import { TodoList } from '../components/TodoList';
-import { TodoItem } from '../components/TodoItem';
-import { CreateTodoButton } from '../components/CreateTodoButton';
-import { TodoSearch } from '../components/TodoSearch';
 import { useLocalStorage } from './useLocalStorage';
 import React from 'react';
+import { AppUI } from './AppUI';
 
 /*
+  const defaultTodos = [
+    { text: 'Aprender Reactjs', completed: false },
+    { text: 'Certificarme en AWS Foundations', completed: false },
+    { text: 'Aprender Nodejs', completed: true },
+    { text: 'Desplegar api rest python en Railway', completed: true },
+  ];
 
-const defaultTodos = [
-  { text: 'Aprender Reactjs', completed: false },
-  { text: 'Certificarme en AWS Foundations', completed: false },
-  { text: 'Aprender Nodejs', completed: true },
-  { text: 'Desplegar api rest python en Railway', completed: true },
-];
-
-let stringifiedTodos = JSON.stringify(defaultTodos);
-
-localStorage.setItem('TODOS_V1',stringifiedTodos);
-
-let todos = JSON.parse(localStorage.getItem('TODOS_V1'));
-
-
-localStorage.removeItem('TODOS_V1');
+  let stringifiedTodos = JSON.stringify(defaultTodos);
+  localStorage.setItem('TODOS_V1',stringifiedTodos);
+  let todos = JSON.parse(localStorage.getItem('TODOS_V1'));
+  localStorage.removeItem('TODOS_V1');
 
 */
 
-
-
 function App() {
-
 
   const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
 
@@ -44,8 +32,6 @@ function App() {
   // del estado
   // el valor del input esta atado al estado
   const [searchValue, setSearchValue] = React.useState('');
-
-
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -58,9 +44,6 @@ function App() {
     const searchText = searchValue.toLowerCase();
     return todoText.includes(searchText)
   });
-
-
-
 
   // metodo que permite actualizar el todoItem
   const completeTodo = (text) => {
@@ -93,45 +76,19 @@ function App() {
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   }
-
-
-  // <> es la forma abreviada de <React.Fragment> 
+  
   return (
-    <>
-      {/*<> <React.Fragment> */}
+    <AppUI
+    completedTodos={completedTodos}
+    totalTodos={totalTodos}
+    searchValue={searchValue}
+    setSearchValue={setSearchValue}
+    searchedTodos={searchedTodos}
+    completeTodo={completeTodo}
+    deleteTodo={deleteTodo}
+    />
+  );
 
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-
-      <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-
-      <TodoList>
-        {/* 
-           <TodoItem />
-           <TodoItem />
-        */}
-
-        {searchedTodos.map(todo => (
-          <TodoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
-            // evento que se dispara cuando 
-            // un todo ha sido completado 
-            onComplete={() => completeTodo(todo.text)}
-            onDelete={() => deleteTodo(todo.text)}
-          />
-        ))}
-
-      </TodoList>
-
-      <CreateTodoButton />
-
-      {/* </React.Fragment> */}
-    </>
-  )
 }
 
 

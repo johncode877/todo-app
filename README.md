@@ -69,6 +69,16 @@ manejo del estado  vamos a utilizar una nueva estrategia para simplificar el cod
 Los hooks son funciones que puedes llamar dentro de componentes funcionales para agregar y manipular características de React, como el estado, el ciclo de vida y los efectos secundarios. Los hooks más comunes son useState, useEffect y useContext, pero también puedes crear tus propios hooks personalizados.
 
 # Organización de archivos y carpetas
+Trabajar generando una carpeta por componente
+y migrando el codigo al archivo index.jsx
+
+
+# Feature-First Directories en React
+
+# Tips para naming y abstracción de componentes React
+
+Separamos la logica "App.jsx" de la presentacion "AppUI.jsx"
+
 
 
 
