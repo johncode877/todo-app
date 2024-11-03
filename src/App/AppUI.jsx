@@ -12,6 +12,16 @@ import { EmptyTodos } from '../components/EmptyTodos';
 import { TodoContext } from '../components/TodoContext';
 
 function AppUI() {
+
+    const {
+        loading,
+        error,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+    } = React.useContext(TodoContext);
+
+
     return (
         <>
             {/* <TodoCounter
@@ -28,49 +38,37 @@ function AppUI() {
             <TodoSearch />
 
 
-             {/* este componente utiliza las render functions
+            {/* este componente utiliza las render functions
              no es necesario envolver el contenido a retornar
              si no solo incluir una funcion flecha que haga 
              un return implicito */}
 
-            <TodoContext.Consumer>
-                {({
-                    loading,
-                    error,
-                    searchedTodos,
-                    completeTodo,
-                    deleteTodo,
-                }) => (
-                    <TodoList>
-                        {loading && (
-                            <>
-                                <TodosLoading />
-                                <TodosLoading />
-                                <TodosLoading />
-                            </>
-                        )}
-
-                        {error && <TodosError />}
-
-                        {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
-
-                        {searchedTodos.map(todo => (
-                            <TodoItem
-                                key={todo.text}
-                                text={todo.text}
-                                completed={todo.completed}
-                                // evento que se dispara cuando 
-                                // un todo ha sido completado 
-                                onComplete={() => completeTodo(todo.text)}
-                                onDelete={() => deleteTodo(todo.text)}
-                            />
-                        ))}
-
-                    </TodoList>
+            <TodoList>
+                {loading && (
+                    <>
+                        <TodosLoading />
+                        <TodosLoading />
+                        <TodosLoading />
+                    </>
                 )}
 
-            </TodoContext.Consumer>
+                {error && <TodosError />}
 
+                {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
+
+                {searchedTodos.map(todo => (
+                    <TodoItem
+                        key={todo.text}
+                        text={todo.text}
+                        completed={todo.completed}
+                        // evento que se dispara cuando 
+                        // un todo ha sido completado 
+                        onComplete={() => completeTodo(todo.text)}
+                        onDelete={() => deleteTodo(todo.text)}
+                    />
+                ))}
+
+            </TodoList>
 
             <CreateTodoButton />
         </>
