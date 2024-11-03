@@ -79,7 +79,20 @@ y migrando el codigo al archivo index.jsx
 
 Separamos la logica "App.jsx" de la presentacion "AppUI.jsx"
 
+# Efectos en React 
+
+Hay partes de la logica de nuestra aplicacion 
+que pueden demorar (consulta api , etc)
 
 
+# Estados de carga y error
+
+Vamos a mostrar un mensaje temporal
+mientras se actualiza la informacion 
+en nuestra aplicacion 
+
+Se recomienda que si un custom hooks
+va a devolver mas de 2 elementos 
+se retorne un objeto en lugar de un arreglo
 
 
