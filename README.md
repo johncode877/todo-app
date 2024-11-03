@@ -126,6 +126,13 @@ pero el renderizado se hará en el div del nodo html que nosotros indiquemos,
 osea fuera del “root”. Esto trae como ventaja por ejemplo poder estilizar fácilmente 
 el modal para que aparezca por encima del resto de componentes.
 
+createPortal recibe 3 parametros:
+
+Children: cualquier cosa que pueda ser renderizada con react.
+domNode: nodo(s)
+(opcional) Key: un string o número único que para ser usado como portal
+
+
 
 
 
