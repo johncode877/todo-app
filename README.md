@@ -112,6 +112,20 @@ Vamos a cambiar el React.Consumer por useContext
 un hook que nos simplifica la forma de acceder al context
 
 
+# React Portals
+
+portales nos permiten ubicar un componente hijo dentro del conjunto de componentes que 
+se renderizan en el nodo html principal del DOM, generalmente el id = “root”, 
+pero hacer que aparezcan en un **nodo **fuera de la jerarquía del DOM. 
+Esto permite una mayor facilidad a la hora de maquetar y estilizar componentes que 
+aparecen y desaparecen en el renderizado de nuestra página como los modales (ventanas). 
+Gracias a los portales, por ejemplo, podemos ubicar a nuestro componente <Modal> 
+luego del conjunto de componentes que tenemos en la AppUI como <TodoCounter/>, 
+<TodoSearch/> o <CreateTodoButton/>, 
+pero el renderizado se hará en el div del nodo html que nosotros indiquemos, 
+osea fuera del “root”. Esto trae como ventaja por ejemplo poder estilizar fácilmente 
+el modal para que aparezca por encima del resto de componentes.
+
 
 
 

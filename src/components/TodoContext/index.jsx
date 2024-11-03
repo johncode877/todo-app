@@ -23,6 +23,8 @@ function TodoProvider({ children }) {
     const completedTodos = todos.filter(todo => !!todo.completed).length;
     const totalTodos = todos.length;
 
+    const [openModal,setOpenModal] = React.useState(true);
+    
     // console.log("Log 1");  
     // ejemplo de uso de efectos 
     // en react  
@@ -99,6 +101,8 @@ function TodoProvider({ children }) {
             searchedTodos,
             completeTodo,
             deleteTodo,
+            openModal,
+            setOpenModal
         }} >
             {children}
         </TodoContext.Provider>
