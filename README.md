@@ -107,6 +107,9 @@ Context: es un elemento que podemos crear en React para establecer una comunicac
 
 Por ende "context" permite acceder a los valores de forma directa.
 
+# useContext
+Vamos a cambiar el React.Consumer por useContext 
+un hook que nos simplifica la forma de acceder al context
 
 
 

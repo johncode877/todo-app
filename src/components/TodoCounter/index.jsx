@@ -1,3 +1,5 @@
+import React from 'react';
+import { TodoContext } from '../TodoContext';
 import './TodoCounter.css';
 
 /*
@@ -24,18 +26,24 @@ import './TodoCounter.css';
 
 //function TodoCounter(props) {
 // style es un atributo del elemento h1
-function TodoCounter({ total, completed, loading }) {
+function TodoCounter(/*{ total, completed, loading }*/) {
+
+    const {
+        loading,        
+        completedTodos,
+        totalTodos,        
+    } = React.useContext(TodoContext);
 
     /*elementos de react*/
     return (
         <>
             {!loading && (
 
-                <><h1 className={`TodoCounter ${(total > 0 && completed == total) && "TodoCounter--hidden"}`}>
-                    Has completado <span>{completed}</span> de <span>{total}</span> TODOs                 
+                <><h1 className={`TodoCounter ${(totalTodos > 0 &&  completedTodos === totalTodos) && "TodoCounter--hidden"}`}>
+                    Has completado <span>{completedTodos}</span> de <span>{totalTodos}</span> TODOs                 
                   </h1>
                   
-                  <h1 className={`TodoCounter ${!(total > 0 && completed == total) && "TodoCounter--hidden"}`}>
+                  <h1 className={`TodoCounter ${!(totalTodos > 0 && completedTodos === totalTodos) && "TodoCounter--hidden"}`}>
                         Felicitaciones!!!!
                   </h1>
                 </>
