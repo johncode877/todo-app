@@ -95,4 +95,20 @@ Se recomienda que si un custom hooks
 va a devolver mas de 2 elementos 
 se retorne un objeto en lugar de un arreglo
 
+# Reto: loading skeletons
+
+# React Context
+
+Prop Drilling: es una paso que ocurre cuando necesitamos propagar(enviar/recibir) datos que están en varias componentes React(comunicacion entre componentes).
+
+Esto se ve siempre cuando pasamos props entre hijos, luego ese a otros hijos y así sucesivamente... la solución es usar "context":
+
+Context: es un elemento que podemos crear en React para establecer una comunicación directa entre un componente en un nivel muy alto y uno en un nivel mucho más bajo.
+
+Por ende "context" permite acceder a los valores de forma directa.
+
+
+
+
+
 

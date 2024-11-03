@@ -24,17 +24,29 @@ import './TodoCounter.css';
 
 //function TodoCounter(props) {
 // style es un atributo del elemento h1
-function TodoCounter({ total, completed }) {
+function TodoCounter({ total, completed, loading }) {
 
     /*elementos de react*/
     return (
         <>
-            <h1 className={`TodoCounter ${ (total > 0 && completed == total) && "TodoCounter--hidden"}`}>
-                Has completado <span>{completed}</span> de <span>{total}</span> TODOs
-            </h1>
-            <h1 className={`TodoCounter ${ !(total > 0 && completed == total) && "TodoCounter--hidden"}`}>
-                Felicitaciones!!!!
-            </h1>
+            {!loading && (
+
+                <><h1 className={`TodoCounter ${(total > 0 && completed == total) && "TodoCounter--hidden"}`}>
+                    Has completado <span>{completed}</span> de <span>{total}</span> TODOs                 
+                  </h1>
+                  
+                  <h1 className={`TodoCounter ${!(total > 0 && completed == total) && "TodoCounter--hidden"}`}>
+                        Felicitaciones!!!!
+                  </h1>
+                </>
+            )}
+
+            {loading && (
+                    <><h1 className="TodoCounter--loading"> 
+                        <span>Cargando ....</span>
+                    </h1>
+                  </>
+            )}
         </>
     );
 }

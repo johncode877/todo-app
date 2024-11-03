@@ -6,47 +6,71 @@ import { TodoList } from '../components/TodoList';
 import { TodoItem } from '../components/TodoItem';
 import { CreateTodoButton } from '../components/CreateTodoButton';
 import { TodoSearch } from '../components/TodoSearch';
+import { TodosError } from '../components/TodosError';
+import { TodosLoading } from '../components/TodosLoading';
+import { EmptyTodos } from '../components/EmptyTodos';
+import { TodoContext } from '../components/TodoContext';
 
-function AppUI({
-    loading,
-    error,
-    completedTodos,
-    totalTodos,
-    searchValue,
-    setSearchValue,
-    searchedTodos,
-    completeTodo,
-    deleteTodo,
-}) {
+function AppUI() {
     return (
         <>
-            <TodoCounter completed={completedTodos} total={totalTodos} />
+            {/* <TodoCounter
+                 completed={completedTodos} 
+                 total={totalTodos} 
+                 loading={loading}/> */}
 
-            <TodoSearch
+            {/* <TodoSearch
                 searchValue={searchValue}
                 setSearchValue={setSearchValue}
-            />
+            /> */}
 
-            <TodoList>
-                {loading && <p>Estamos cargando ...</p>}
-                {error && <p>Opps, Hubo un error!!!</p>}
+            <TodoCounter />
+            <TodoSearch />
 
-                {(!loading && searchedTodos.length ==0) && 
-                 <p>Crea tu primer TODO!</p>}
 
-                {searchedTodos.map(todo => (
-                    <TodoItem
-                        key={todo.text}
-                        text={todo.text}
-                        completed={todo.completed}
-                        // evento que se dispara cuando 
-                        // un todo ha sido completado 
-                        onComplete={() => completeTodo(todo.text)}
-                        onDelete={() => deleteTodo(todo.text)}
-                    />
-                ))}
+             {/* este componente utiliza las render functions
+             no es necesario envolver el contenido a retornar
+             si no solo incluir una funcion flecha que haga 
+             un return implicito */}
 
-            </TodoList>
+            <TodoContext.Consumer>
+                {({
+                    loading,
+                    error,
+                    searchedTodos,
+                    completeTodo,
+                    deleteTodo,
+                }) => (
+                    <TodoList>
+                        {loading && (
+                            <>
+                                <TodosLoading />
+                                <TodosLoading />
+                                <TodosLoading />
+                            </>
+                        )}
+
+                        {error && <TodosError />}
+
+                        {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
+
+                        {searchedTodos.map(todo => (
+                            <TodoItem
+                                key={todo.text}
+                                text={todo.text}
+                                completed={todo.completed}
+                                // evento que se dispara cuando 
+                                // un todo ha sido completado 
+                                onComplete={() => completeTodo(todo.text)}
+                                onDelete={() => deleteTodo(todo.text)}
+                            />
+                        ))}
+
+                    </TodoList>
+                )}
+
+            </TodoContext.Consumer>
+
 
             <CreateTodoButton />
         </>
