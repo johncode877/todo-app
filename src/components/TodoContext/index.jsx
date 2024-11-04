@@ -23,8 +23,8 @@ function TodoProvider({ children }) {
     const completedTodos = todos.filter(todo => !!todo.completed).length;
     const totalTodos = todos.length;
 
-    const [openModal,setOpenModal] = React.useState(true);
-    
+    const [openModal, setOpenModal] = React.useState(false);
+
     // console.log("Log 1");  
     // ejemplo de uso de efectos 
     // en react  
@@ -53,6 +53,19 @@ function TodoProvider({ children }) {
         const searchText = searchValue.toLowerCase();
         return todoText.includes(searchText)
     });
+
+    const addTodo = (text) => {
+        console.log("addTodo!!!");
+        const newTodos = [...todos];
+
+        newTodos.push({
+            text,
+            completed: false
+        });
+
+        saveTodos(newTodos);
+    };
+
 
     // metodo que permite actualizar el todoItem
     const completeTodo = (text) => {
@@ -89,7 +102,7 @@ function TodoProvider({ children }) {
     // para que cualquier componente 
     // encapsulado dentro del componente 
     // TodoProvider pueda acceder a ellos
-    
+
     return (
         <TodoContext.Provider value={{
             loading,
@@ -102,7 +115,8 @@ function TodoProvider({ children }) {
             completeTodo,
             deleteTodo,
             openModal,
-            setOpenModal
+            setOpenModal,
+            addTodo
         }} >
             {children}
         </TodoContext.Provider>

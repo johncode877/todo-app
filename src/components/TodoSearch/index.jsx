@@ -10,33 +10,46 @@ function TodoSearch() {
     setSearchValue
   } = React.useContext(TodoContext);
 
+
   return (
-
-    <>
-      {!loading && (
-        <input
-          className="TodoSearch"
-          placeholder="Aprender Ingles"
-          value={searchValue}
-          onChange={(event) => {
-            /*
-              console.log('Escribiste en TodoSearch');
-              console.log(event);
-              console.log(event.target);
-              // event.target es el elemento html 
-              // que genero el evento
-              console.log(event.target.value);
-            */
-            setSearchValue(event.target.value);
-          }}
-        />)}
-
-      {loading && (
-        <input disabled className="TodoSearch--loading"/>
-      )}
-
-    </>
+    <input
+      placeholder="Aprender ingles"
+      className="TodoSearch"
+      value={searchValue}
+      onChange={(event) => {
+        setSearchValue(event.target.value);
+      }}
+    />
   );
+
+  // return (
+
+  //   <>
+  //     {!loading && (
+  //       <input
+  //         className="TodoSearch"
+  //         placeholder="Aprender Ingles"
+  //         value={searchValue}
+  //         onChange={(event) => {
+            
+  //             // console.log('Escribiste en TodoSearch');
+  //             // console.log(event);
+  //             // console.log(event.target);
+  //             // // event.target es el elemento html 
+  //             // // que genero el evento
+  //             // console.log(event.target.value);
+            
+  //           setSearchValue(event.target.value);
+  //         }}
+  //       />)}
+
+  //     {loading && (
+  //       <input disabled className="TodoSearch--loading"/>
+  //     )}
+
+  //   </>
+  // );
+
 }
 
 // export nombrado 

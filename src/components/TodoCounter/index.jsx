@@ -34,29 +34,36 @@ function TodoCounter(/*{ total, completed, loading }*/) {
         totalTodos,        
     } = React.useContext(TodoContext);
 
-    /*elementos de react*/
     return (
-        <>
-            {!loading && (
-
-                <><h1 className={`TodoCounter ${(totalTodos > 0 &&  completedTodos === totalTodos) && "TodoCounter--hidden"}`}>
-                    Has completado <span>{completedTodos}</span> de <span>{totalTodos}</span> TODOs                 
-                  </h1>
-                  
-                  <h1 className={`TodoCounter ${!(totalTodos > 0 && completedTodos === totalTodos) && "TodoCounter--hidden"}`}>
-                        Felicitaciones!!!!
-                  </h1>
-                </>
-            )}
-
-            {loading && (
-                    <><h1 className="TodoCounter--loading"> 
-                        <span>Cargando ....</span>
-                    </h1>
-                  </>
-            )}
-        </>
+        <h1 className="TodoCounter">
+          Has completado <span>{completedTodos}</span> de <span>{totalTodos}</span> TODOs
+        </h1>
     );
+
+
+    /*elementos de react*/
+    // return (
+    //     <>
+    //         {!loading && (
+
+    //             <><h1 className={`TodoCounter ${(totalTodos > 0 &&  completedTodos === totalTodos) && "TodoCounter--hidden"}`}>
+    //                 Has completado <span>{completedTodos}</span> de <span>{totalTodos}</span> TODOs                 
+    //               </h1>
+                  
+    //               <h1 className={`TodoCounter ${!(totalTodos > 0 && completedTodos === totalTodos) && "TodoCounter--hidden"}`}>
+    //                     Felicitaciones!!!!
+    //               </h1>
+    //             </>
+    //         )}
+
+    //         {loading && (
+    //                 <><h1 className="TodoCounter--loading"> 
+    //                     <span>Cargando ....</span>
+    //                 </h1>
+    //               </>
+    //         )}
+    //     </>
+    // );
 }
 
 // export default 

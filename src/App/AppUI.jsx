@@ -11,6 +11,8 @@ import { TodosLoading } from '../components/TodosLoading';
 import { EmptyTodos } from '../components/EmptyTodos';
 import { TodoContext } from '../components/TodoContext';
 import { Modal } from '../components/Modal';
+import { TodoForm } from '../components/TodoForm';
+
 
 function AppUI() {
 
@@ -21,7 +23,7 @@ function AppUI() {
         completeTodo,
         deleteTodo,
         openModal,
-        setOpenModal
+        setOpenModal,
     } = React.useContext(TodoContext);
 
 
@@ -79,7 +81,7 @@ function AppUI() {
 
             {openModal && (
                 <Modal>
-                 La funcionalidad de agregar TODO
+                    <TodoForm/>
                 </Modal>        
             )}
 
