@@ -1,25 +1,22 @@
-# React + Vite
+# Todo App
+Proyecto Inicial que permite revisar y poner en practica 
+los conceptos de React de la mano de la herramienta vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Los siguientes puntos son algunos de los conceptos y temas 
+que se abordaron en el presente proyecto 
 
-Currently, two official plugins are available:
+## Comunicacion objeto padre e hijo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Estilos CSS en React
 
-# Comunicacion objeto padre e hijo
+## Eventos en React: onClick, onChange
 
-# Estilos CSS en React
-
-# Eventos en React: onClick, onChange
-
-# Trabajando con el Estado
-
+## Trabajando con el Estado
 En cada componente debemos importar React
 import React from 'react';
 para poder utilizar la funcion useState()
 
-# Compartiendo estado del padre al hijo y trabajar con estados derivados
+## Compartiendo estado del padre al hijo y trabajar con estados derivados
 
 Los estados deben estar a nivel del componente
 padre.
@@ -30,15 +27,13 @@ hijos a través de los props
 Los estados derivados , son calculos , operaciones
 o resultados que hacemos con los estados 
 
-# Buscando Todos
+## Buscando Todos
 
+## Completando y eliminando TODOs
 
-# Completando y eliminando TODOs
-
-# Iconos en React: librerías y SVG
+## Iconos en React: librerías y SVG
 
 npm i vite-plugin-svgr
-
 npm i @svgr/rollup --save-dev
 
 iconType[type] es el componente 
@@ -51,41 +46,39 @@ Pasamos el parametro color
 {iconType[type](color)}
 
 
-# Local Storage con React.js
+## Local Storage con React.js
 
-Api del navegador que permite la persistencia de datos
+El navegador nos ofrece una api, para la
+persistencia de datos de forma local
 
+"JSON.stringify" permite convertir un objeto json a string 
 let stringifiedTodos = JSON.stringify(defaulTodos)
-permite convertir a string un json 
 
-
+"JSON.parse" permite convertir a string un json 
 JSON.parse(stringifiedTodos);
 
-# Custom Hooks
+## Custom Hooks
 
 Nuestro componente es mas complejo ahora , ya que tenemos logica para almacenar  el localStorage y
 manejo del estado  vamos a utilizar una nueva estrategia para simplificar el codigo "customHooks"
 
 Los hooks son funciones que puedes llamar dentro de componentes funcionales para agregar y manipular características de React, como el estado, el ciclo de vida y los efectos secundarios. Los hooks más comunes son useState, useEffect y useContext, pero también puedes crear tus propios hooks personalizados.
 
-# Organización de archivos y carpetas
+## Organización de archivos y carpetas
 Trabajar generando una carpeta por componente
 y migrando el codigo al archivo index.jsx
 
 
-# Feature-First Directories en React
+## Feature-First Directories en React
 
-# Tips para naming y abstracción de componentes React
-
+## Tips para naming y abstracción de componentes React
 Separamos la logica "App.jsx" de la presentacion "AppUI.jsx"
 
-# Efectos en React 
-
+## Efectos en React 
 Hay partes de la logica de nuestra aplicacion 
 que pueden demorar (consulta api , etc)
 
-
-# Estados de carga y error
+## Estados de carga y error
 
 Vamos a mostrar un mensaje temporal
 mientras se actualiza la informacion 
@@ -95,9 +88,9 @@ Se recomienda que si un custom hooks
 va a devolver mas de 2 elementos 
 se retorne un objeto en lugar de un arreglo
 
-# Reto: loading skeletons
+## Reto: loading skeletons
 
-# React Context
+## React Context
 
 Prop Drilling: es una paso que ocurre cuando necesitamos propagar(enviar/recibir) datos que están en varias componentes React(comunicacion entre componentes).
 
@@ -107,12 +100,12 @@ Context: es un elemento que podemos crear en React para establecer una comunicac
 
 Por ende "context" permite acceder a los valores de forma directa.
 
-# useContext
+## useContext
 Vamos a cambiar el React.Consumer por useContext 
 un hook que nos simplifica la forma de acceder al context
 
 
-# React Portals
+## React Portals
 
 portales nos permiten ubicar un componente hijo dentro del conjunto de componentes que 
 se renderizan en el nodo html principal del DOM, generalmente el id = “root”, 
@@ -133,39 +126,42 @@ domNode: nodo(s)
 (opcional) Key: un string o número único que para ser usado como portal
 
 
-# Maquetando formularios en React
+## Maquetando formularios en React
 
-# Despliegue de TODO Machine en GitHub Pages
+## Despliegue de TODO Machine en GitHub Pages
 
-1) Hacemos el build
-npm run build 
+    1) Hacemos el build
+    npm run build 
 
-2) Validamos el build productivo
-   generado en el paso anterior
-npm run preview
+    2) Validamos el build productivo
+    generado en el paso anterior
+    npm run preview
 
-3) Instalamos dependencia de desarrollo
-   para hacer el deploy en ghpages
-npm i --save-dev gh-pages
+    3) Instalamos dependencia de desarrollo
+    para hacer el deploy en ghpages
+    npm i --save-dev gh-pages
 
-4) Añadir los siguientes scripts al package.json
-   para realizar el predeploy y deploy
+    4) Añadir los siguientes scripts al package.json
+    para realizar el predeploy y deploy
 
-"predeploy": "npm run build",
-"deploy": "gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
 
-5) Configurar el contexto en vite.config.js
- 
- base: '/todo-app/'
+    5) Configurar el contexto en vite.config.js
+    
+    base: '/todo-app/'
 
-6) Ejecutar el comando para realizar el deploy 
-npm run deploy
+    6) Ejecutar el comando para realizar el deploy 
+    npm run deploy
 
+
+## Links de Interes 
+
+https://es.vitejs.dev/guide/
 https://es.vitejs.dev/guide/static-deploy
-
-
-
-
+https://es.react.dev/learn/start-a-new-react-project
+https://www.dhiwise.com/post/understanding-event-stop-propagation-in-react-a-comprehensive-guide
+https://javascript.plainenglish.io/creating-modals-with-react-portal-40829c33a626
 
 
 
