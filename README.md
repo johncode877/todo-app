@@ -135,6 +135,40 @@ domNode: nodo(s)
 
 # Maquetando formularios en React
 
+# Despliegue de TODO Machine en GitHub Pages
+
+1) Hacemos el build
+npm run build 
+
+2) Validamos el build productivo
+   generado en el paso anterior
+npm run preview
+
+3) Instalamos dependencia de desarrollo
+   para hacer el deploy en ghpages
+npm i --save-dev gh-pages
+
+4) Añadir los siguientes scripts al package.json
+   para realizar el predeploy y deploy
+
+"predeploy": "npm run build",
+"deploy": "gh-pages -d dist"
+
+5) Configurar el contexto en vite.config.js
+ 
+ base: '/todo-app/'
+
+6) Ejecutar el comando para realizar el deploy 
+npm run deploy
+
+https://es.vitejs.dev/guide/static-deploy
+
+
+
+
+
+
+
 
 
 

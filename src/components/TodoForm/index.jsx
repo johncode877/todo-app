@@ -24,38 +24,43 @@ function TodoForm() {
     }
 
     const onChange = (event) => {
-        console.log("onChange");
+        //console.log("onChange");
         setNewTodoValue(event.target.value);
     }
 
     return (
-        <form>
-            <label>Escribe tu nuevo TODO</label>
-            <textarea
-                placeholder="Aprender Ingles"
-                value={newTodoValue}
-                onChange={onChange}
-                required
-            />
-            <div className="TodoForm-buttonContainer">
-                <button
-                    type="button"
-                    className="TodoForm-button 
+        <div onClick={(e) => {
+            console.log("div->stopPropagation() ");
+            e.stopPropagation();
+        }}>
+            <form onSubmit={onSubmit}>
+                <label>Escribe tu nuevo TODO</label>
+                <textarea
+                    placeholder="Aprender Ingles"
+                    value={newTodoValue}
+                    onChange={onChange}
+                    required
+                />
+                <div className="TodoForm-buttonContainer">
+                    <button
+                        type="button"
+                        className="TodoForm-button 
                                TodoForm-button--cancel"
-                    onClick={onCancel}
-                >
-                    Cancelar
-                </button>
-                <button
-                    type="submit"
-                    className="TodoForm-button 
+                        onClick={onCancel}
+                    >
+                        Cancelar
+                    </button>
+                    <button
+                        type="submit"
+                        className="TodoForm-button 
                               TodoForm-button--add"
-                    onSubmit={onSubmit}
-                >
-                    Añadir
-                </button>
-            </div>
-        </form>
+                       
+                    >
+                        Añadir
+                    </button>
+                </div>
+            </form>
+        </div >
     )
 }
 
